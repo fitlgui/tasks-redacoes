@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redações Enem - 2024/2015</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body
+    style="width: 100%; overflow: hidden; height: 100vh; font-family: Inter, 'sans-serif'; margin: 0; padding: 5px; background-color: #171717;">
+    <h2 style="color: white; display: flex; align-items: center; gap: 4px; margin: 0; padding: 0px;">Redação <p
+            id="year"> </p>
+        </h1>
+
+        <div style="display: flex; align-items: center; ">
+            <div>
+                <h1 id="tema" style="color: white; padding: 0; margin: 0;">Tema: </h1>
+                <h2 id="textoApoio" style="color: white; padding: 0; margin: 0;">Textos de Apoio:</h2>
+            </div>
+            <div id="analise"></div>
+        </div>
+        <div id="redacoesMil" style="color: white;"></div>
+
+        <div
+            style="display: flex; font-family: Inter, 'sans-serif'; align-items: center; margin: auto; gap: 2px; width: 100%; justify-content: center; margin-top: 10px;">
+            <button style="background-color: #0ACF8F; border: 0; border-radius: 5px;"
+                id="btn-anterior">Anterior</button>
+            <button style="background-color: #0ACF8F; border: 0; border-radius: 5px;" id="btn-proximo">Próxima</button>
+        </div>
+</body>
+
+</html>
+<script>
+
+    const paginas = [
+        {
+            Tema: "Desafios para a valorização da herança africana no Brasil",
+            Ano: "2024",
+            textosDeApoio: [
+                "https://s2.static.brasilescola.uol.com.br/enem/2024/11/texto-motivador-redacao-enem-2024.jpeg",
+                "https://s2.static.brasilescola.uol.com.br/enem/2024/11/texto-motivador-redacao-enem-2024-2.jpeg"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/H65BncQjL-k\" title=\"REDAÇÃO NOTA 1000 sobre o TEMA DO ENEM 2024 (veja se você foi bem)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://www.cnnbrasil.com.br/educacao/enem-2024-veja-rascunho-de-redacao-nota-mil/",
+                "https://g1.globo.com/educacao/enem/2024/noticia/2025/03/14/enem-2024-leia-redacoes-nota-mil.ghtml",
+                "https://coredacao.com/conteudo/redacoes-nota-1000-do-enem-2024/"
+            ]
+        },
+        {
+            Tema: "Desafios para o enfrentamento da invisibilidade do trabalho de cuidado realizado pela mulher no Brasil",
+            Ano: "2023",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2023.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2023-textos-motivadores-da-redacao-foram-claros-e-diretos-avaliam-professores/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/tIK0-HrPyxY\" title=\"Análise da Redação Enem 2023 [Professor Noslen]\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2023/noticia/2024/03/18/enem-2023-leia-redacoes-nota-mil.ghtml",
+                "https://www.cnnbrasil.com.br/educacao/redacao-do-enem-leia-5-textos-que-tiraram-nota-mil-em-2023/",
+                "https://guiadoestudante.abril.com.br/enem/confira-redacoes-nota-mil-do-enem-2023/"
+            ]
+        },
+        {
+            Tema: "Desafios para a valorização de comunidades e povos tradicionais no Brasil",
+            Ano: "2022",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/enem-2022-tema-da-redacao/353468.html",
+                "https://guiadoestudante.abril.com.br/enem/enem-2022-veja-os-textos-motivadores-da-redacao/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/9Oqmp8LjTLY\" title=\"Redação nota 1000 - Enem 2022 - análise de um texto\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/noticia/2023/04/10/enem-2022-leia-redacoes-nota-mil.ghtml",
+                "https://vestibulares.estrategia.com/portal/materias/redacao/redacao-nota-1000-enem-2022/",
+                "https://guiadoestudante.abril.com.br/enem/confira-espelhos-de-redacoes-nota-1000-no-enem-2022/"
+            ]
+        },
+        {
+            Tema: "Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil",
+            Ano: "2021",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2021.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2021-veja-textos-motivadores-da-redacao/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/aQmGeVFSfVA\" title=\"ANÁLISE DA REDAÇÃO DO ENEM 2021: Invisibilidade e registro civil\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/noticia/2022/04/11/enem-2021-leia-redacoes-nota-mil.ghtml",
+                "https://vestibular.brasilescola.uol.com.br/enem/enem-2021-leia-redacoes-nota-1000/352425.html"
+            ]
+        },
+        {
+            Tema: "O estigma associado às doenças mentais na sociedade brasileira",
+            Ano: "2020",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2020.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2020-veja-textos-motivadores-da-redacao-sobre-doencas-mentais/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/CMD1nbKbr5Y\" title=\"TEMA DA REDAÇÃO DO ENEM 2020: O ESTIGMA ASSOCIADO ÀS DOENÇAS MENTAIS NA SOCIEDADE BRASILEIRA\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/noticia/2021/05/18/enem-2020-leia-redacoes-nota-mil.ghtml",
+                "https://coredacao.com/exemplos-de-redacao-nota-1000/enem-2020/"
+            ]
+        },
+        {
+            Tema: "Democratização do acesso ao cinema no Brasil",
+            Ano: "2019",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2019-democratizacao-acesso-cinema-brasil.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2019-veja-os-textos-motivadores-da-redacao-sobre-cinema/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/8qFdBrFwDUk\" title=\"Enem 2019: o que achamos do tema da redação? - Brasil Escola\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2019/noticia/2020/03/16/enem-2019-leia-redacoes-nota-mil.ghtml",
+                "https://agenciabrasil.ebc.com.br/educacao/noticia/2020-01/aluno-nota-mil-na-redacao-do-enem-defende-democratizacao-do-cinema"
+            ]
+        },
+        {
+            Tema: "Manipulação do comportamento do usuário pelo controle de dados na Internet",
+            Ano: "2018",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2018.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2018-veja-os-textos-motivadores-da-redacao-sobre-manipulacao-de-dados/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/BqCqOOwOk-Q\" title=\"Redação do Enem 2018: Análise do Tema - Brasil Escola\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2018/noticia/2019/03/19/enem-2018-leia-redacoes-nota-mil.ghtml",
+                "https://unex.edu.br/blog/redacao-enem-2018"
+            ]
+        },
+        {
+            Tema: "Desafios para a formação educacional de surdos no Brasil",
+            Ano: "2017",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2017.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2017-veja-os-textos-motivadores-da-redacao-sobre-formacao-de-surdos/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/tHakZzuYxdw\" title=\"SOBRE O TEMA DA REDAÇÃO DO ENEM 2017 Desafios para a formação educacional de surdos no Brasil\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2017/noticia/enem-2017-leia-redacoes-nota-mil.ghtml",
+                "https://www.youtube.com/watch?v=FICygh6K7o8"
+            ]
+        },
+        {
+            Tema: "Caminhos para combater a intolerância religiosa no Brasil",
+            Ano: "2016",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2016-intolerancia-religiosa.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2016-intolerancia-religiosa-e-o-tema-da-redacao/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/CRkxRiu9aU0\" title=\"Tema da redação do Enem 2016 é &quot;Caminhos para combater a intolerância religiosa no Brasil&quot;\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2016/noticia/2017/03/leia-redacoes-do-enem-2016-que-tiraram-nota-mil.ghtml",
+                "https://vestibular.brasilescola.uol.com.br/enem/redacoes-nota-1000-no-enem-2016.htm"
+            ]
+        },
+        {
+            Tema: "A persistência da violência contra a mulher na sociedade brasileira",
+            Ano: "2015",
+            textosDeApoio: [
+                "https://vestibular.brasilescola.uol.com.br/enem/tema-redacao-enem-2015.htm",
+                "https://guiadoestudante.abril.com.br/enem/enem-2015-tema-da-redacao-e-a-persistencia-da-violencia-contra-a-mulher/"
+            ],
+            analise: "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/kCDRJ6nMNz8\" title=\"Lendo e comentando minha redação do ENEM 2015 - Débora Aladim\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+            redacoesNotaMil: [
+                "https://g1.globo.com/educacao/enem/2015/noticia/2016/04/veja-redacoes-nota-1000-do-enem-2015-sobre-violencia-contra-mulher.html",
+                "https://blog.imaginie.com.br/redacoes/"
+            ]
+        }
+    ]
+
+
+    let index = 0;
+    let selectedPage = paginas[0]
+    
+    carregarPaginas()
+
+    let btnAnterior = document.body.querySelector('#btn-anterior').addEventListener('click', () => {
+        if (index === 0) {
+            alert('Não é possivel voltar')
+        }
+        index--;
+        selectedPage = paginas[index];
+        carregarPaginas()
+    })
+
+    // Botao de Proximo
+    let btnProximo = document.body.querySelector('#btn-proximo').addEventListener('click', () => {
+        index++;
+        selectedPage = paginas[index];
+        carregarPaginas()
+    })
+
+    async function carregarPaginas() {
+        // Controle da paginas
+        document.body.querySelector('#year').innerHTML = selectedPage.Ano;
+        document.body.querySelector('#tema').innerHTML = 'Tema: ' + selectedPage.Tema;
+        document.body.querySelector('#textoApoio').innerHTML = `<img src=${selectedPage.textosDeApoio[0]}> <img src=${selectedPage.textosDeApoio[1]}>`;
+        document.body.querySelector('#analise').innerHTML = selectedPage.analise;
+        document.body.querySelector('#redacoesMil').innerHTML = `<span>Redações Nota Mil:</span> <a href=${selectedPage.redacoesNotaMil[0]}>${selectedPage.redacoesNotaMil[0]}</a> <a href=${selectedPage.redacoesNotaMil[1]}>${selectedPage.redacoesNotaMil[1]}</a>`;
+    }
+</script>
