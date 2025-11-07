@@ -1,0 +1,18 @@
+/* Estiliza o scroll em toda a página */
+::-webkit-scrollbar {
+  width: 4px; /* Define a largura da barra */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Cor de fundo da trilha */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0acf8f; /* Cor da barra de rolagem */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Cor ao passar o mouse */
+}
