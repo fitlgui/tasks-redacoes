@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -45,8 +45,27 @@
             <button style="background-color: #0ACF8F; padding: 10px; border: 0; border-radius: 5px;" id="btn-proximo">Próxima</button>
         </div>
     </div>
-
-    <!-- <div style="position: absolute; z-index: 999; background-color: #171717; border-radius: 10px; padding: 10px; height: 300px; width: 70%; top:0; "></div> -->
+    <div id="pop-up" style="display: block; position: absolute; z-index: 999; backdrop-filter: blur(10px); background-color: rgba(255, 255, 255, 0.5); border-radius: 10px; padding: 10px; height: 100%; width: 100%; left: 50%; right: 50%; top: 50%; transform: translate(-50%, -50%); ">
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; align-items: center; justify-content: center;">
+            <h2>Redações do ENEM</h2>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <p>Escolha um ano:</p>
+                <select style="border-radius: 10px; padding: 5px;" id="select-year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                </select>
+            </div>
+            <button style="background-color: #0ACF8F; padding: 10px; border: 0; border-radius: 5px; width: 200px;" onclick="searchAnoRedacao()" >Buscar</button>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -184,9 +203,23 @@
         }
     ]
 
-
     let index = 0;
     let selectedPage = paginas[0]
+
+
+    
+    function searchAnoRedacao() {
+        const redacaoAno = document.body.querySelector('#select-year').value;
+        const indexRed = paginas.findIndex((ano) => ano.Ano === redacaoAno);
+        
+        // Selecionar o Ano
+        index = indexRed;
+        selectedPage = paginas[indexRed];
+        carregarPaginas();
+
+        // Desabilitar o popUp
+        document.querySelector('#pop-up').style.display = 'none';
+    }
 
     carregarPaginas()
 
